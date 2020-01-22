@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 
 export default function Input(props){
 
-  const today = new Date().toISOString().slice(0, 10)
-
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
   const [category, setCategory] = useState('')
-  const [date, setDate] = useState(today)
+  const [date, setDate] = useState(props.today)
 
   const onSubmit = event => {
     event.preventDefault()
@@ -15,7 +13,7 @@ export default function Input(props){
     setName('')
     setDesc('')
     setCategory('')
-    setDate('')
+    setDate(props.today)
   }
 
   return (
@@ -45,7 +43,7 @@ export default function Input(props){
         type="date" 
         id="date" 
         name="due-date"
-        min={today} max="2020-12-31"
+        min={props.today} max="2020-12-31"
         value={date}
         onChange={event => setDate(event.target.value)}>
       </input>
