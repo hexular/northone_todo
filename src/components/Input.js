@@ -1,26 +1,55 @@
 import React, { useState } from 'react'
 
 export default function Input(){
-  const [blank, setBlank] = useState('')
-  const [newTodo, setNewTodo] = useState({})
+  
+  const today = new Date().toISOString().slice(0, 10)
+
+  const [name, setName] = useState('')
+  const [desc, setDesc] = useState('')
+  const [category, setCategory] = useState('')
+  const [date, setDate] = useState(today)
 
   const onSubmit = event => {
     event.preventDefault()
-
+    setName('')
+    setDesc('')
+    setCategory('')
+    setDate('')
   }
 
   return (
-    <form>
-      <input type="text" placeholder="Add New Todo" id="name"></input>
-      <input type="text" placeholder="Description" id="desc"></input>
-      <input type="text" placeholder="Select Category" id="category"></input>
+    <form onSubmit={onSubmit}>
+      <input 
+        value={name} 
+        type="text" 
+        placeholder="Add New Todo" 
+        id="name" 
+        onChange={event => setName(event.target.value)}>
+      </input>
+      <input 
+        value={desc} 
+        type="text" 
+        placeholder="Description" 
+        id="desc"
+        onChange={event => setDesc(event.target.value)}>
+      </input>
+      <input 
+        value={category} 
+        type="text" 
+        placeholder="Select Category" 
+        id="category"
+        onChange={event => setCategory(event.target.value)}>
+      </input>
       <input 
         type="date" 
         id="date" 
         name="due-date"
-        min="2020-01-23" max="2020-12-31">
+        min="2020-01-23" max="2020-12-31"
+        value={date}
+        onChange={event => setDate(event.target.value)}>
       </input>
-      <input type="submit" value="Add Todo" onClick={(e) => e.preventDefault()}></input>
+      <input type="submit" value="Add Todo">
+      </input>
     </form>
   )
 }

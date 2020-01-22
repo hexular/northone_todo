@@ -16,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <TodoList todos={todos}/>
+      <Input />
     </div>
   )
 }
