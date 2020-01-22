@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-export default function Input(){
-  
+export default function Input(props){
+
   const today = new Date().toISOString().slice(0, 10)
 
   const [name, setName] = useState('')
@@ -11,6 +11,7 @@ export default function Input(){
 
   const onSubmit = event => {
     event.preventDefault()
+    props.newTodo(name, desc, category, date)
     setName('')
     setDesc('')
     setCategory('')
@@ -44,7 +45,7 @@ export default function Input(){
         type="date" 
         id="date" 
         name="due-date"
-        min="2020-01-23" max="2020-12-31"
+        min={today} max="2020-12-31"
         value={date}
         onChange={event => setDate(event.target.value)}>
       </input>
