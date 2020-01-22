@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import './App.css'
+// import './App.css'
 import Input from './components/Input'
 import TodoItem from './components/TodoItem'
+import TodoList from './components/TodoList'
 
 function App() {
   const [todos, setTodos] = useState([
@@ -10,9 +11,11 @@ function App() {
     {name: "Clean My Room", desc: "Tidy up after finals week", category: "Chores", due: ""} 
   ])
 
+  
+
   return (
     <div className="App">
-      <Input />
+      <TodoList todos={todos}/>
     </div>
   )
 }

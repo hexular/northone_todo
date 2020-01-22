@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react'
 
 export default function Input(){
+  const [blank, setBlank] = useState('')
+  const [newTodo, setNewTodo] = useState({})
+
+  const onSubmit = event => {
+    event.preventDefault()
+
+  }
+
   return (
     <form>
       <input type="text" placeholder="Add New Todo" id="name"></input>
