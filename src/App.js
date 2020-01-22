@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import Input from './components/Input'
+import TodoItem from './components/TodoItem'
 
 function App() {
+  const [todos, setTodos] = useState([
+    {name: "Build To Do App", desc: "Build a to do app in react for NorthOne", category: "Coding", due: ""}, 
+    {name: "Buy Groceries", desc: "Milk, Eggs, Bagels, Cheese, Peppers, Potatoes", category: "Food", due: ""}, 
+    {name: "Clean My Room", desc: "Tidy up after finals week", category: "Chores", due: ""} 
+  ])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
