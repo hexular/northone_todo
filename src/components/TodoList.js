@@ -1,5 +1,7 @@
 import React from 'react'
 import './Todo.css'
+import IconButton from '@material-ui/core/IconButton'
+// import DeleteIcon from 
 
 export default function List(props) {
 
@@ -13,8 +15,11 @@ export default function List(props) {
       >
         {todo.name}
         {/* {todo.due} */}
+        <IconButton onClick={() => props.deleteTodo(i)}>
+          {/* <DeleteIcon /> */}
+          delete
+        </IconButton>
       </li>
-      <p onClick={() => props.deleteTodo(i)}>delete</p>
       </React.Fragment>
     )
   })
