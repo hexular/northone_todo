@@ -1,0 +1,8 @@
+.done {
+  color: lightgray;
+  text-decoration: line-through;
+}
+
+.pending {
+  color: black;
+}

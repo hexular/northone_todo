@@ -32,7 +32,7 @@ function App() {
 
   const markDone = index => {
     const newTodos = [...todos]
-    newTodos[index].done = true
+    newTodos[index].done = !newTodos[index].done
     console.log(index)
     setTodos(newTodos)
   }
