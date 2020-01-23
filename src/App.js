@@ -17,7 +17,8 @@ function App() {
       category: "Coding", 
       due: today, 
       done: false,
-      deleted: false
+      deleted: false,
+      edit: false
     }, 
     {
       name: "Buy Groceries", 
@@ -25,7 +26,8 @@ function App() {
       category: "Food", 
       due: today, 
       done: false,
-      deleted: false
+      deleted: false,
+      edit: false
     }, 
     {
       name: "Clean My Room", 
@@ -33,7 +35,8 @@ function App() {
       category: "Chores", 
       due: today, 
       done: false,
-      deleted: false
+      deleted: false,
+      edit: false
     } 
   ])
 
@@ -53,8 +56,14 @@ function App() {
     setAdd(false)
   }
 
+  const editTodo = index => {
+    const newTodos = [...todos]
+    newTodos[index].edit = true
+    setTodos(newTodos)
+  }
+
   const newTodo = (name, desc, category, date) => {
-    const newTodos = [...todos, {name: name, desc: desc, category: category, date: date, done: false, deleted: false}]
+    const newTodos = [...todos, {name: name, desc: desc, category: category, date: date, done: false, deleted: false, edit: false}]
     setTodos(newTodos)
     setAdd(false)
   }
@@ -62,7 +71,7 @@ function App() {
   return (
     <div className="App">
       <h2>Todo List</h2>
-      <TodoList todos={todos} markDone={markDone} deleteTodo={deleteTodo}/>
+      <TodoList today={today} todos={todos} markDone={markDone} deleteTodo={deleteTodo} editTodo={editTodo}/>
       {add ? <Input newTodo={newTodo} today={today} cancelForm={cancelForm}/> : <IconButton><AddIcon onClick={() => setAdd(true)}/></IconButton>}
     </div>
   )

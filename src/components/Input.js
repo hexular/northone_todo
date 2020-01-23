@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Input.css'
 import AddIcon from '@material-ui/icons/Add'
 import IconButton from '@material-ui/core/IconButton'
@@ -12,6 +12,17 @@ export default function Input(props){
   const [category, setCategory] = useState('')
   const [date, setDate] = useState(props.today)
 
+  useEffect(() => {
+
+    if (props.fill !== undefined) {
+      setName(props.fill.name)
+      setDesc(props.fill.desc)
+      setCategory(props.fill.category)
+      console.log(props.fill.due, date)
+      setDate(props.fill.due)
+    }
+  }, [])
+    
   const onSubmit = () => {
     props.newTodo(name, desc, category, date)
     setName('')
@@ -63,7 +74,7 @@ export default function Input(props){
       />
       <div className="icons">
         <IconButton>
-          <AddIcon onClick={() => onSubmit()}/>
+          {props.fill === undefined ? <AddIcon onClick={() => onSubmit()}/> : ''}
         </IconButton>
         <IconButton onClick={() => props.cancelForm()}>
           <ClearIcon/>

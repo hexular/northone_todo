@@ -29,3 +29,13 @@
   align-items: center;
   flex-direction: column;
 }
+
+
+.hidden {
+  display: none;
+  transition: 0.5s;
+}
+
+.title:hover ~ .hidden{
+  display: block;
+}
