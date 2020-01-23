@@ -38,14 +38,12 @@ function App() {
   const markDone = index => {
     const newTodos = [...todos]
     newTodos[index].done = !newTodos[index].done
-    console.log(index)
     setTodos(newTodos)
   }
 
   const deleteTodo = index => {
     const newTodos = [...todos]
     newTodos[index].deleted = true
-    console.log(index)
     setTodos(newTodos)
   }
 
