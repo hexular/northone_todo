@@ -14,20 +14,25 @@ function App() {
       desc: "Build a to do app in react for NorthOne", 
       category: "Coding", 
       due: today, 
-      done: false
+      done: false,
+      deleted: false
     }, 
     {
       name: "Buy Groceries", 
       desc: "Milk, Eggs, Bagels, Cheese, Peppers, Potatoes", 
       category: "Food", 
       due: today, 
-      done: false}, 
+      done: false,
+      deleted: false
+    }, 
     {
       name: "Clean My Room", 
       desc: "Tidy up after finals week", 
       category: "Chores", 
       due: today, 
-      done: false} 
+      done: false,
+      deleted: false
+    } 
   ])
 
   const markDone = index => {
@@ -37,14 +42,21 @@ function App() {
     setTodos(newTodos)
   }
 
+  const deleteTodo = index => {
+    const newTodos = [...todos]
+    newTodos[index].deleted = true
+    console.log(index)
+    setTodos(newTodos)
+  }
+
   const newTodo = (name, desc, category, date) => {
-    const newTodos = [...todos, {name: name, desc: desc, category: category, date: date, done: false}]
+    const newTodos = [...todos, {name: name, desc: desc, category: category, date: date, done: false, deleted: false}]
     setTodos(newTodos)
   }
 
   return (
     <div className="App">
-      <TodoList todos={todos} markDone={markDone}/>
+      <TodoList todos={todos} markDone={markDone} deleteTodo={deleteTodo}/>
       <Input newTodo={newTodo} today={today}/>
     </div>
   )

@@ -5,6 +5,7 @@ export default function List(props) {
 
   const list = props.todos.map((todo, i) => {
     return !todo.deleted && (
+      <React.Fragment>
       <li 
         className={todo.done ? "done" : "pending"} 
         onClick={() => props.markDone(i)} 
@@ -13,6 +14,8 @@ export default function List(props) {
         {todo.name}
         {/* {todo.due} */}
       </li>
+      <p onClick={() => props.deleteTodo(i)}>delete</p>
+      </React.Fragment>
     )
   })
 
