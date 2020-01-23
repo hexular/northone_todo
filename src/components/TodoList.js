@@ -11,7 +11,6 @@ export default function List(props) {
       <React.Fragment>
         <li className={todo.done ? "done list" : "pending list"} key={i}>
           <p className="title">{todo.name}</p>
-          {/* {todo.due} */}
           <div className="icons">
             <IconButton onClick={() => props.markDone(i)}>
               <CheckIcon />
@@ -26,7 +25,7 @@ export default function List(props) {
   })
 
   return (
-    <ul>
+    <ul className="table">
       {list}
     </ul>
   )

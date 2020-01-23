@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-// import './App.css'
+import './App.css'
 import Input from './components/Input'
-import TodoItem from './components/TodoItem'
 import TodoList from './components/TodoList'
 
 const today = new Date().toISOString().slice(0, 10)
@@ -54,6 +53,7 @@ function App() {
 
   return (
     <div className="App">
+      <h2>Todo List</h2>
       <TodoList todos={todos} markDone={markDone} deleteTodo={deleteTodo}/>
       <Input newTodo={newTodo} today={today}/>
     </div>
