@@ -24,15 +24,29 @@ export default function Input(props){
   }, [])
     
   const onSubmit = () => {
-    props.newTodo(name, desc, category, date)
-    setName('')
-    setDesc('')
-    setCategory('')
-    setDate(props.today)
+    
+    if (name && desc && category) {
+      if (date >= props.today) {
+        console.log(date)
+        props.newTodo(name, desc, category, date)
+        setName('')
+        setDesc('')
+        setCategory('')
+        setDate(props.today)
+      } else {
+        alert('Date cannot be in the past')
+      }
+    } else {
+      alert('Please fill out all fields')
+    }
+  }
+
+  const dateChange = event => {
+    setDate(event.target.value)
   }
 
   return (
-    <form className="form" autoComplete="off">
+    <form className={props.fill === undefined ? "form" : 'line'} autoComplete="off">
       <TextField 
         value={name} 
         type="text" 
@@ -64,19 +78,23 @@ export default function Input(props){
       />
       
       <TextField 
+        className="input"
         type="date" 
         id="date" 
         name="due-date"
-        min={props.today} max="2020-12-31"
-        defaultValue={date}
-        onChange={event => setDate(event.target.value)} 
+        defaultValue={props.fill === undefined ? date : props.fill.due}
+        format="MM-DD-YYYY"
+        onChange={e => setDate(e.target.value)} 
         variant="outlined"
       />
-      <div className="icons">
+      <div className={props.fill === undefined ? "icons" : 'line'}>
         <IconButton>
-          {props.fill === undefined ? <AddIcon onClick={() => onSubmit()}/> : ''}
+          {props.fill === undefined ? <AddIcon onClick={() => onSubmit()}/> : <AddIcon onClick={() => {
+            props.updateTodo(props.index, {name: name, desc: desc, category: category, due: date})
+          }
+            }/>}
         </IconButton>
-        <IconButton onClick={() => props.cancelForm()}>
+        <IconButton onClick={props.fill === undefined ? () => props.cancelForm() : () => props.editTodo(props.index)}>
           <ClearIcon/>
         </IconButton>
       </div>

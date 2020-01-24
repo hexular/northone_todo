@@ -12,4 +12,19 @@
 
 .input {
   padding: 1vmin;
+  width: 20%;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+}
+
+.MuiFormControl-root {
+  margin-bottom: 1em;
+}
+
+.MuiTextField-root {
+  margin-bottom: 1em;
 }

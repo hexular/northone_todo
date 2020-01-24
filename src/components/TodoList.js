@@ -15,12 +15,9 @@ export default function List(props) {
       <React.Fragment>
         <li className="list" key={i}>
           <span className="list">
-            <Input fill={todo} today={props.today}/>
+            <Input fill={todo} today={props.today} editTodo={props.editTodo} updateTodo={props.updateTodo} index={i}/>
           </span>
           <div className="icons">
-            <IconButton onClick={() => props.updateTodo(i)}>
-              <CheckIcon />
-            </IconButton>
             <IconButton onClick={() => props.deleteTodo(i)}>
               <DeleteIcon />
             </IconButton>

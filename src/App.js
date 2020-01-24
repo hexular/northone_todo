@@ -58,12 +58,18 @@ function App() {
 
   const editTodo = index => {
     const newTodos = [...todos]
-    newTodos[index].edit = true
+    newTodos[index].edit = !newTodos[index].edit
+    setTodos(newTodos)
+  }
+
+  const updateTodo = (index, todo) => {
+    const newTodos = [...todos]
+    newTodos[index] = todo
     setTodos(newTodos)
   }
 
   const newTodo = (name, desc, category, date) => {
-    const newTodos = [...todos, {name: name, desc: desc, category: category, date: date, done: false, deleted: false, edit: false}]
+    const newTodos = [...todos, {name: name, desc: desc, category: category, due: date, done: false, deleted: false, edit: false}]
     setTodos(newTodos)
     setAdd(false)
   }
@@ -71,7 +77,7 @@ function App() {
   return (
     <div className="App">
       <h2>Todo List</h2>
-      <TodoList today={today} todos={todos} markDone={markDone} deleteTodo={deleteTodo} editTodo={editTodo}/>
+      <TodoList updateTodo={updateTodo} today={today} todos={todos} markDone={markDone} deleteTodo={deleteTodo} editTodo={editTodo}/>
       {add ? <Input newTodo={newTodo} today={today} cancelForm={cancelForm}/> : <IconButton><AddIcon onClick={() => setAdd(true)}/></IconButton>}
     </div>
   )
