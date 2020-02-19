@@ -18,7 +18,6 @@ export default function Input(props){
       setName(props.fill.name)
       setDesc(props.fill.desc)
       setCategory(props.fill.category)
-      console.log(props.fill.due, date)
       setDate(props.fill.due)
     }
   }, [])
@@ -27,7 +26,6 @@ export default function Input(props){
     
     if (name && desc && category) {
       if (date >= props.today) {
-        console.log(date)
         props.newTodo(name, desc, category, date)
         setName('')
         setDesc('')
